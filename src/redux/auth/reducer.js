@@ -10,6 +10,7 @@ const initialState = {
 }
 
 export default function auth(state = initialState, action) {
+    console.log(action.type);
     switch (action.type) {
         case AUTH_REQUEST_START:{
             const {loading} = action.payload;
@@ -19,12 +20,12 @@ export default function auth(state = initialState, action) {
             }
         }            
         case AUTH_REQUEST_SUCCESS:{
-            const {loading, user, authToken: token} = action.payload;
+            const {loading, username, authToken} = action.payload;
             return {
                 ...state,
                 loading: loading,
-                username: user,
-                authToken: token
+                username: username,
+                authToken: authToken
             }
         }            
         case AUTH_REQUEST_FAILURE:{
