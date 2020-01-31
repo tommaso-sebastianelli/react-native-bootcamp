@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from 'react-native';
-import { View, TextInput } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import { authRequestStart } from '../../redux/auth/actions';
 
@@ -23,11 +23,13 @@ function Login({ doLogin }) {
 
     return (
         <View style={styles.container}>
+            <Text>Username</Text>
             <TextInput
                 style={styles.input}
                 onChangeText={text => onChangeUser(text)}
                 value={username}
             />
+            <Text>password</Text>
             <TextInput
                 style={styles.input}
                 secureTextEntry
