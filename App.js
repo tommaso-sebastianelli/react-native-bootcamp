@@ -1,16 +1,14 @@
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createStackNavigator } from 'react-navigation-stack';
 
-import PageOne from './src/containers/PageOne';
-import PageTwo from './src/containers/PageTwo';
+import Login from './src/containers/Login';
 
-const TabNavigator = createBottomTabNavigator({
-  PageOne: PageOne,
-  PageTwo: PageTwo
+const StackNavigator = createStackNavigator({
+  Login: Login,
 },
 {
-  initialRouteName: 'PageOne',
+  initialRouteName: 'Login',
 });
 
-export default createAppContainer(TabNavigator);
+export default createAppContainer(StackNavigator);
