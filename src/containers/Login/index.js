@@ -1,14 +1,11 @@
+import { Button, Text, TextInput, View } from 'react-native';
 import React, { useState } from 'react'
-import { Button } from 'react-native';
-import { View, Text, TextInput } from 'react-native';
-import { connect } from 'react-redux';
-import { authRequestStart } from '../../redux/auth/actions';
 
+import { connect } from 'react-redux';
+import { signInRequest } from '../../redux/auth/actions';
 import styles from './style';
 
-
-
-function Login({ doLogin }) {
+function Login({ doLogin, navigation }) {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -29,24 +26,27 @@ function Login({ doLogin }) {
                 onChangeText={text => onChangeUser(text)}
                 value={username}
             />
-            <Text>password</Text>
+            <Text>Password</Text>
             <TextInput
                 style={styles.input}
                 secureTextEntry
                 onChangeText={text => onChangePassword(text)}
                 value={password}
             />
-            <Button title="Login" onPress={() => doLogin()}></Button>
+            <Button title="Login" onPress={() => doLogin(navigation)}></Button>
         </View>
     )
 }
 
 const mapStateToProps = (state) => ({
-
+    
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    doLogin: () => dispatch(authRequestStart('dummyUser', 'dummyPwd'))
+    doLogin: (navigation) => {
+        dispatch(signInRequest('dummyUser', 'dummyPwd'));
+        navigation.navigate('AuthLoading'); // FIXME
+    }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

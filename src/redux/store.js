@@ -5,7 +5,7 @@ import sagas from './auth/sagas' // FIXME
 
 import reducers from './reducers';
 
-import { persistStore, persistCombineReducers } from 'redux-persist'
+import { persistCombineReducers, persistStore } from 'redux-persist'
 // import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 import AsyncStorage from '@react-native-community/async-storage';
 

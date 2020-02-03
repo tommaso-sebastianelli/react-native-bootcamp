@@ -1,6 +1,4 @@
-import { } from './actions';
-import { AUTH_REQUEST_START, AUTH_REQUEST_SUCCESS, AUTH_REQUEST_FAILURE } from './types';
-
+import { AUTH_OFF, AUTH_REQUEST_FAILURE, AUTH_REQUEST_START, AUTH_REQUEST_SUCCESS } from './types';
 
 const initialState = {
     loading: false,
@@ -35,7 +33,16 @@ export default function auth(state = initialState, action) {
                 loading: loading,
                 error: errorMessage
             }
-        }            
+        } 
+        case AUTH_OFF: {
+            return {
+                ...state,
+                loading: false,
+                error: null,
+                username: null,
+                authToken: null
+            }
+        }
         default:
             return state
     }
