@@ -9,3 +9,8 @@ export const isAuthenticatedSelector = createSelector(
     [isAuthenticated],
     authenticated => authenticated
 )
+
+export const credentialSelector = (state) => {
+    const { authReducer } = state;
+    return {username: authReducer.username, password: authReducer.password}
+}

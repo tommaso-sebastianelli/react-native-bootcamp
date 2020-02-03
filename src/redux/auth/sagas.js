@@ -4,9 +4,11 @@ import {
   call,
   delay,
   put,
-  take
+  select,
+  take,
 } from 'redux-saga/effects'
 
+import { credentialSelector } from './selectors';
 import NavigationService from '../../../NavigatorService';
 
 const mockAuthorize = () => new Promise((resolve) => resolve({ username: 'dummy.usermail.com', token: '6fbu3r93urGVIWd3DG$)/Y)/ygdtd3d' }));
@@ -23,7 +25,8 @@ function* login() {
     yield take(AUTH_REQUEST_START);
     yield call(() => NavigationService.navigate('AuthLoading'));
     try {
-      const { username, token } = yield call(mockAuthorize, '', ''); // TODO get from state
+      const { state_username, state_password } = yield select(credentialSelector);
+      const { username, token } = yield call(mockAuthorize, state_username, state_password);
       console.log(username, token);
       yield delay(2000);
       yield put({ type: AUTH_REQUEST_SUCCESS, payload: { username: username, authToken: token, loading: false } });
