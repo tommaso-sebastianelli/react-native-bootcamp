@@ -43,7 +43,7 @@ function Login({ doLogin, navigation }) {
                 onChangeText={text => onChangePassword(text)}
                 value={password}
             />
-            <Button disabled={formValid === false} title="Login" onPress={() => doLogin(navigation)}></Button>
+            <Button disabled={formValid === false} title="Login" onPress={() => doLogin(username, password)}></Button>
         </View>
     )
 }
@@ -53,8 +53,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    doLogin: (navigation) => {
-        dispatch(signInRequest('dummyUser', 'dummyPwd'));
+    doLogin: (username, password) => {
+        dispatch(signInRequest(username, password));
     }
 })
 
