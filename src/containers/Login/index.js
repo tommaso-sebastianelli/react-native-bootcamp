@@ -1,5 +1,5 @@
 import { Button, Text, TextInput, View } from 'react-native';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { connect } from 'react-redux';
 import { signInRequest } from '../../redux/auth/actions';
@@ -9,6 +9,11 @@ function Login({ doLogin, navigation }) {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [formValid, setFormValid] = useState(false);
+
+    useEffect(() => {
+        validateForm();
+    });
 
     const onChangeUser = text => {
         setUsername(text);
@@ -17,6 +22,11 @@ function Login({ doLogin, navigation }) {
     const onChangePassword = text => {
         setPassword(text);
     }
+
+    const validateForm = () => {
+        console.log(password, username)
+        setFormValid(username.trim().length > 2 && password.length > 2)
+    };
 
     return (
         <View style={styles.container}>
@@ -33,13 +43,13 @@ function Login({ doLogin, navigation }) {
                 onChangeText={text => onChangePassword(text)}
                 value={password}
             />
-            <Button title="Login" onPress={() => doLogin(navigation)}></Button>
+            <Button disabled={formValid === false} title="Login" onPress={() => doLogin(navigation)}></Button>
         </View>
     )
 }
 
 const mapStateToProps = (state) => ({
-    
+
 })
 
 const mapDispatchToProps = (dispatch) => ({
