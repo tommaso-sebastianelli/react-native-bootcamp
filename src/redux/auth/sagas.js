@@ -1,4 +1,4 @@
-import { AUTH_REQUEST_FAILURE, AUTH_REQUEST_START, AUTH_REQUEST_SUCCESS } from './types'
+import { AUTH_OFF, AUTH_REQUEST_START } from './types'
 import {
   all,
   call,
@@ -6,6 +6,7 @@ import {
   put,
   take
 } from 'redux-saga/effects'
+import {signInFailure, signInSuccess} from './actions';
 
 import NavigationService from '../../../NavigatorService';
 
@@ -19,16 +20,24 @@ function* login() {
       const { username, token } = yield call(mockAuthorize, '', ''); // TODO get from state
       console.log(username, token);
       yield delay(2000);
-      yield put({ type: AUTH_REQUEST_SUCCESS, payload: { username: username, authToken: token, loading: false } });
+      yield put(signInSuccess);
     } catch (err) {
       console.error(err);
-      yield put({ type: AUTH_REQUEST_FAILURE, payload: { error: err, loading: false } });
+      yield put(signInFailure);
     }
+  }
+}
+
+function* logout() {
+  while (true) {
+    yield take(AUTH_OFF);
+    yield call(() => NavigationService.navigate('AuthLoading'));
   }
 }
 
 export default function* rootSaga() {
   yield all([
-    login()
+    login(),
+    logout()
   ])
 }

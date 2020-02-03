@@ -26,7 +26,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     doLogout: (navigation) => {
         dispatch(signOutRequest());
-        navigation.navigate('AuthLoading');
     }
 })
 
