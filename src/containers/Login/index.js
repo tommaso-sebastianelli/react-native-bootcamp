@@ -45,7 +45,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     doLogin: (navigation) => {
         dispatch(signInRequest('dummyUser', 'dummyPwd'));
-        navigation.navigate('AuthLoading'); // FIXME
     }
 })
 
