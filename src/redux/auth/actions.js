@@ -18,5 +18,5 @@ export const signInFailure = (user, password) => ({
 });
 
 export const signOutRequest = () => ({
-    type: AUTH_OFF
+    type: AUTH_OFF, payload: {}
 });

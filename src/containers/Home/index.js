@@ -4,7 +4,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { signOutRequest } from '../../redux/auth/actions'
 
-function Home({ doLogout, navigation }) {
+function Home({ doLogout }) {
 
     return (
         <View style={{
@@ -14,7 +14,7 @@ function Home({ doLogout, navigation }) {
             margin: 32
         }}>
             <Text>Home Page</Text>
-            <Button title="Logout" onPress={() => doLogout(navigation)}></Button>
+            <Button title="Logout" onPress={doLogout}></Button>
         </View>
     )
 }
@@ -24,9 +24,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    doLogout: (navigation) => {
-        dispatch(signOutRequest());
-    }
+    doLogout: () => dispatch(signOutRequest())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

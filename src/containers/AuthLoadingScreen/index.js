@@ -8,6 +8,7 @@ function AuthLoadingScreen(props) {
     const { authenticated, loading, navigation } = props;
 
     useEffect(() => {
+        console.log(`authenticated: ${authenticated}`);
         if (!loading) {
             console.log(`authenticated: ${authenticated}`);
             navigation.navigate(authenticated ? 'App' : 'Auth');
