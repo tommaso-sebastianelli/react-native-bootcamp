@@ -2,20 +2,25 @@
  * @format
  */
 
-import React from 'react';
-import { Provider } from 'react-redux';
-import { AppRegistry } from 'react-native';
-import App from './App';
-import { name as appName } from './app.json';
 import 'react-native-gesture-handler';
-import { PersistGate } from 'redux-persist/integration/react'
+
 import { persistor, store } from './src/redux/store';
+
+import App from './App';
+import { AppRegistry } from 'react-native';
+import NavigationService from './NavigatorService';
+import { PersistGate } from 'redux-persist/integration/react'
+import { Provider } from 'react-redux';
+import React from 'react';
+import { name as appName } from './app.json';
 
 function ReactRedux() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <App />
+        <App ref={navigatorRef => {
+          NavigationService.setTopLevelNavigator(navigatorRef);
+        }}/>
       </PersistGate>
     </Provider>
   );
