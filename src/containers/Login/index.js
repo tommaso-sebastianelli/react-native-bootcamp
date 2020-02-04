@@ -54,7 +54,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     doLogin: (username, password) => {
-        dispatch(signInRequest(username, password));
+        dispatch(signInRequest({username, password}));
     }
 })
 

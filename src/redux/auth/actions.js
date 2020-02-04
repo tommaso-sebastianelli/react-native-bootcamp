@@ -1,22 +1,18 @@
-import { AUTH_OFF, AUTH_REQUEST_START } from './types';
+import { AUTH_OFF, AUTH_REQUEST_START, AUTH_REQUEST_SUCCESS } from './types';
 
-export const signInRequest = (user, password) => ({
+export const signInRequest = (payload) => ({
     type: AUTH_REQUEST_START,
-    payload: {
-        loading: true,
-        user,
-        password
-    }
+    payload
 });
 
-export const signInSuccess = (user, password) => ({
-    type: AUTH_REQUEST_SUCCESS, payload: { username: username, authToken: token, loading: false }
+export const signInSuccess = (payload) => ({
+    type: AUTH_REQUEST_SUCCESS, payload
 });
 
-export const signInFailure = (user, password) => ({
-    type: AUTH_REQUEST_FAILURE, payload: { error: err, loading: false }
+export const signInFailure = (payload) => ({
+    type: AUTH_REQUEST_FAILURE, payload
 });
 
-export const signOutRequest = () => ({
-    type: AUTH_OFF, payload: {}
+export const signOutRequest = (payload) => ({
+    type: AUTH_OFF, payload
 });

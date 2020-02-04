@@ -14,14 +14,14 @@ export default function auth(state = initialState, action) {
             const {loading} = action.payload;
             return {
                 ...state,
-                loading: loading,
+                loading: true,
             }
         }            
         case AUTH_REQUEST_SUCCESS:{
             const {loading, username, authToken} = action.payload;
             return {
                 ...state,
-                loading: loading,
+                loading: false,
                 username: username,
                 authToken: authToken
             }
@@ -30,7 +30,7 @@ export default function auth(state = initialState, action) {
             const {loading, errorMessage} = action.payload;
             return {
                 ...state,
-                loading: loading,
+                loading: false,
                 error: errorMessage
             }
         } 
