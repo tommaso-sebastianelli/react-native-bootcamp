@@ -1,20 +1,16 @@
-import { Toast } from 'native-base';
-import { all, call, delay, put, select, take } from 'redux-saga/effects';
+import { all, delay, put, take } from 'redux-saga/effects';
 import NavigationService from '../../../NavigatorService';
+import Toast from '../../utils/toast';
 import { signInFailure, signInSuccess } from './actions';
 import { AUTH_OFF, AUTH_REQUEST_START } from './types';
 
 
 const mockAuthorize = (username, password) => (console.log(`credentials: ${username} ${password}`), new Promise((resolve) =>
-  (username === 'AAA' && password === 'aaa')
-    ? resolve({ status: 200, username: 'dummy.usermail.com', token: '6fbu3r93urGVIWd3DG$)/Y)/ygdtd3d' })
+  (username === 'Tommaso' && password === 'aaa')
+    ? resolve({ status: 200, username: username, token: '6fbu3r93urGVIWd3DG$)/Y)/ygdtd3d' })
     : resolve({ status: 401 })
 ));
-const showErrorToast = function () {
-  Toast.show({
-    text: 'SignIn failed.'
-  });
-}
+
 
 function* logout() {
   while (true) {
@@ -32,12 +28,13 @@ function* login() {
       yield delay(2000);
       if (status === 200) {
         yield put(signInSuccess({ username: username, authToken: token }))
+        yield Toast.showSuccess(`Welcome ${username}`)
       } else {
-        yield showErrorToast();
+        yield Toast.showError('Authentication failed')
         yield put(signInFailure({ error: status }));
       }
     } catch (err) {
-      yield showErrorToast();
+      yield Toast.showError('Authentication failed')
       console.error(err);
       yield put(signInFailure({ error: err }));
     }
