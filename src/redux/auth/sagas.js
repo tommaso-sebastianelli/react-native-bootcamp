@@ -1,6 +1,6 @@
 import { all, delay, put, take } from 'redux-saga/effects';
 import NavigationService from '../../../NavigatorService';
-import Toast from '../../utils/toast';
+import CustomToast from '../../utils/customToast';
 import { signInFailure, signInSuccess } from './actions';
 import { AUTH_OFF, AUTH_REQUEST_START } from './types';
 
@@ -28,13 +28,13 @@ function* login() {
       yield delay(2000);
       if (status === 200) {
         yield put(signInSuccess({ username: username, authToken: token }))
-        yield Toast.showSuccess(`Welcome ${username}`)
+        yield CustomToast().showToast(`Welcome ${username}`, 3000, { type: 'success' })
       } else {
-        yield Toast.showError('Authentication failed')
+        yield CustomToast().showToast('Authentication failed', 3000, { type: 'danger' })
         yield put(signInFailure({ error: status }));
       }
     } catch (err) {
-      yield Toast.showError('Authentication failed')
+      yield CustomToast().showToast('Authentication failed', 3000, { type: 'danger' })
       console.error(err);
       yield put(signInFailure({ error: err }));
     }
