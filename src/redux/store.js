@@ -1,5 +1,9 @@
+import { Platform } from 'react-native';
 import { applyMiddleware, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
 import createSagaMiddleware from 'redux-saga'
+
 
 import sagas from './auth/sagas' // FIXME
 
@@ -18,8 +22,10 @@ const persistedReducer = persistCombineReducers(persistConfig, reducers);
 
 const sagaMiddleware = createSagaMiddleware();
 
-//  const enhancers = Platform.OS === 'ios' ? 
-const enhancers = applyMiddleware(sagaMiddleware);
+const enhancers =
+    Platform.OS === 'ios'
+        ? composeWithDevTools(applyMiddleware(sagaMiddleware))
+        : applyMiddleware(sagaMiddleware);
 
 const store = createStore(
     persistedReducer,

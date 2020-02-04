@@ -11,27 +11,28 @@ export default function auth(state = initialState, action) {
     console.log(action.type);
     switch (action.type) {
         case AUTH_REQUEST_START:{
-            const {loading} = action.payload;
+            const {} = action.payload;
             return {
                 ...state,
-                loading: loading,
+                loading: true,
+                error: null
             }
         }            
         case AUTH_REQUEST_SUCCESS:{
-            const {loading, username, authToken} = action.payload;
+            const { username, authToken} = action.payload;
             return {
                 ...state,
-                loading: loading,
+                loading: false,
                 username: username,
                 authToken: authToken
             }
         }            
         case AUTH_REQUEST_FAILURE:{
-            const {loading, errorMessage} = action.payload;
+            const { error} = action.payload;
             return {
                 ...state,
-                loading: loading,
-                error: errorMessage
+                loading: false,
+                error
             }
         } 
         case AUTH_OFF: {
