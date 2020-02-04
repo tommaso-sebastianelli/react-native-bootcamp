@@ -11,14 +11,15 @@ export default function auth(state = initialState, action) {
     console.log(action.type);
     switch (action.type) {
         case AUTH_REQUEST_START:{
-            const {loading} = action.payload;
+            const {} = action.payload;
             return {
                 ...state,
                 loading: true,
+                error: null
             }
         }            
         case AUTH_REQUEST_SUCCESS:{
-            const {loading, username, authToken} = action.payload;
+            const { username, authToken} = action.payload;
             return {
                 ...state,
                 loading: false,
@@ -27,11 +28,11 @@ export default function auth(state = initialState, action) {
             }
         }            
         case AUTH_REQUEST_FAILURE:{
-            const {loading, errorMessage} = action.payload;
+            const { error} = action.payload;
             return {
                 ...state,
                 loading: false,
-                error: errorMessage
+                error
             }
         } 
         case AUTH_OFF: {
