@@ -1,4 +1,4 @@
-import { AUTH_OFF, AUTH_REQUEST_START, AUTH_REQUEST_SUCCESS } from './types';
+import { AUTH_OFF, AUTH_REQUEST_START, AUTH_REQUEST_SUCCESS, AUTH_REQUEST_FAILURE } from './types';
 
 export const signInRequest = (payload) => ({
     type: AUTH_REQUEST_START,
@@ -6,13 +6,16 @@ export const signInRequest = (payload) => ({
 });
 
 export const signInSuccess = (payload) => ({
-    type: AUTH_REQUEST_SUCCESS, payload
+    type: AUTH_REQUEST_SUCCESS,
+    payload
 });
 
 export const signInFailure = (payload) => ({
-    type: AUTH_REQUEST_FAILURE, payload
+    type: AUTH_REQUEST_FAILURE,
+    payload
 });
 
 export const signOutRequest = (payload) => ({
-    type: AUTH_OFF, payload
+    type: AUTH_OFF,
+    payload
 });
