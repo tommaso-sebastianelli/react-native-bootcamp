@@ -1,17 +1,16 @@
-import { Toast } from 'native-base';
-import { all, call, delay, put, select, take } from 'redux-saga/effects';
+import { all, delay, put, take } from 'redux-saga/effects';
 import NavigationService from '../../../NavigatorService';
+import CustomToast from '../../utils/customToast';
 import { signInFailure, signInSuccess } from './actions';
-import { credentialSelector } from './selectors';
 import { AUTH_OFF, AUTH_REQUEST_START } from './types';
 
 
-const mockAuthorize = () => new Promise((resolve) => resolve({ status: 200, username: 'dummy.usermail.com', token: '6fbu3r93urGVIWd3DG$)/Y)/ygdtd3d' }));
-const showErrorToast = function () {
-  Toast.show({
-    text: 'SignIn failed.'
-  });
-}
+const mockAuthorize = (username, password) => (console.log(`credentials: ${username} ${password}`), new Promise((resolve) =>
+  (username === 'Tommaso' && password === 'aaa')
+    ? resolve({ status: 200, username: username, token: '6fbu3r93urGVIWd3DG$)/Y)/ygdtd3d' })
+    : resolve({ status: 401 })
+));
+
 
 function* logout() {
   while (true) {
@@ -22,21 +21,20 @@ function* logout() {
 
 function* login() {
   while (true) {
-    yield take(AUTH_REQUEST_START);
+    const { payload } = yield take(AUTH_REQUEST_START);
     yield NavigationService.navigate('AuthLoading');
     try {
-      const { state_username, state_password } = yield select(credentialSelector);
-      const { status, username, token } = yield call(mockAuthorize, state_username, state_password);
-      console.log(username, token);
+      const { status, username, token } = yield mockAuthorize(payload.username, payload.password);
       yield delay(2000);
       if (status === 200) {
         yield put(signInSuccess({ username: username, authToken: token }))
+        yield CustomToast().showToast(`Welcome ${username}`, 3000, { type: 'success' })
       } else {
-        yield showErrorToast();
+        yield CustomToast().showToast('Authentication failed', 3000, { type: 'danger' })
         yield put(signInFailure({ error: status }));
       }
     } catch (err) {
-      yield showErrorToast();
+      yield CustomToast().showToast('Authentication failed', 3000, { type: 'danger' })
       console.error(err);
       yield put(signInFailure({ error: err }));
     }
