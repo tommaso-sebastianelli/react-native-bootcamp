@@ -1,11 +1,10 @@
-import { Button, Text, TextInput, View } from 'react-native';
-import React, { useState, useEffect } from 'react'
-
+import React, { useCallback, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { signInRequest } from '../../redux/auth/actions';
-import styles from './style';
+import { StyledText, StyledTouchableOpacity, StyledView } from '../../utils/styled';
+import { StyledTextInput } from './style';
 
-function Login({ doLogin, navigation }) {
+function Login({ doLogin }) {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -15,36 +14,32 @@ function Login({ doLogin, navigation }) {
         validateForm();
     });
 
-    const onChangeUser = text => {
-        setUsername(text);
-    }
+    const onChangeUser = useCallback(text => { setUsername(text) }, []);
 
-    const onChangePassword = text => {
-        setPassword(text);
-    }
+    const onChangePassword = useCallback(text => { setPassword(text) }, []);
 
-    const validateForm = () => {
+    const validateForm = useCallback(() => {
         console.log(password, username)
         setFormValid(username.trim().length > 2 && password.length > 2)
-    };
+    }, [password, username]);
 
     return (
-        <View style={styles.container}>
-            <Text>Username</Text>
-            <TextInput
-                style={styles.input}
+        <StyledView>
+            <StyledText style={{marginBottom: 2, fontSize: 22}}>Username</StyledText>
+            <StyledTextInput
                 onChangeText={text => onChangeUser(text)}
                 value={username}
             />
-            <Text>Password</Text>
-            <TextInput
-                style={styles.input}
+            <StyledText style={{marginBottom: 2, fontSize: 22}}>Password</StyledText>
+            <StyledTextInput
                 secureTextEntry
                 onChangeText={text => onChangePassword(text)}
                 value={password}
             />
-            <Button disabled={formValid === false} title="Login" onPress={() => doLogin(username, password)}></Button>
-        </View>
+            <StyledTouchableOpacity disabled={!formValid} onPress={() => doLogin(username, password)}>
+                <StyledText >Login</StyledText>
+            </StyledTouchableOpacity>
+        </StyledView>
     )
 }
 
@@ -54,7 +49,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     doLogin: (username, password) => {
-        dispatch(signInRequest({username, password}));
+        dispatch(signInRequest({ username, password }));
     }
 })
 

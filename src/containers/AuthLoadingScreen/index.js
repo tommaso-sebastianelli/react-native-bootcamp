@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
-import { Text, View } from 'react-native'
-
-import { connect } from 'react-redux'
+import { Spinner } from 'native-base';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { isAuthenticatedSelector } from '../../redux/auth/selectors';
+import { StyledView } from '../../utils/styled';
+
 
 function AuthLoadingScreen(props) {
     const { authenticated, loading, navigation } = props;
@@ -16,14 +17,9 @@ function AuthLoadingScreen(props) {
     }, [authenticated, loading]);
 
     return (
-        <View style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            margin: 32
-        }}>
-            <Text>Loading....</Text>
-        </View>
+        <StyledView>
+            <Spinner color="white" />
+        </StyledView>
     )
 }
 
