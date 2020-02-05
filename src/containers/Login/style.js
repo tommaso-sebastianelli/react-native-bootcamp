@@ -1,15 +1,10 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native'
 
-export default StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        margin: 32
-    },
-    input: {
-        borderRadius: 4,
-        borderWidth: 0.5,
-        borderColor: '#d6d7da',
-        marginBottom: 16
-    }
-});
+export const StyledTextInput = styled.TextInput`
+    background: white;
+    marginBottom: 8px;
+    border-radius: 4px;
+    font-size: 25px;
+    padding: 8px;
+    opacity: 0.75;
+`
