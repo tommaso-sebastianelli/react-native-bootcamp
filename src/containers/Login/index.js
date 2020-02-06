@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { Image } from 'react-native';
 import { connect } from 'react-redux';
 import { signInRequest } from '../../redux/auth/actions';
-import { StyledText, StyledTextInput, StyledTouchableOpacity, StyledView } from '../../utils/styled';
+import { StyledText, StyledTextButton, StyledTextInput, StyledTouchableOpacity, StyledView } from '../../utils/styled';
 
 function Login({ doLogin }) {
 
@@ -24,19 +25,22 @@ function Login({ doLogin }) {
 
     return (
         <StyledView>
-            <StyledText style={{marginBottom: 2, fontSize: 22}}>Username</StyledText>
+            <Image source={require('../../assets/logo.png')}
+                style={{ width: 150, height: 150, alignSelf:"center" }}
+                resizeMode='contain' resizeMethod='scale' />
+            <StyledText style={{ marginBottom: 2, fontSize: 22 }}>Username</StyledText>
             <StyledTextInput
                 onChangeText={text => onChangeUser(text)}
                 value={username}
             />
-            <StyledText style={{marginBottom: 2, fontSize: 22}}>Password</StyledText>
+            <StyledText style={{ marginBottom: 2, fontSize: 22 }}>Password</StyledText>
             <StyledTextInput
                 secureTextEntry
                 onChangeText={text => onChangePassword(text)}
                 value={password}
             />
             <StyledTouchableOpacity disabled={!formValid} onPress={() => doLogin(username, password)}>
-                <StyledText >Login</StyledText>
+                <StyledTextButton >Login</StyledTextButton>
             </StyledTouchableOpacity>
         </StyledView>
     )
