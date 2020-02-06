@@ -18,10 +18,33 @@ A Login template written in react native
 
 ## Setup
 
+From the root folder:
+
     yarn | npm i
+
+Then install pods:
+
+    cd ios
+
+    pods install
+
+You don't need to link dependancies anymore.
 
 ## Launch
 
-    npm run ios|android
+From the root foder
 
+    npm run [ios|android]
+
+
+## Libraries
+
+I this template has been used the following libraries: 
+
+* [react-redux](https://github.com/reduxjs/react-redux)
+* [redux-saga](https://github.com/redux-saga/redux-saga)
+* [reselect](https://github.com/reduxjs/reselect)
+* [redux-persist](https://github.com/rt2zz/redux-persist)
+* [react-navigation](https://github.com/rt2zz/redux-persist)
+* [styled-components](https://github.com/styled-components/styled-components)
 
