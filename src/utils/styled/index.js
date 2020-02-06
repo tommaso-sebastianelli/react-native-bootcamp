@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
-const background = '#ffe082';
-const fontColor = '#c51162'
+const background = '#7986cb';
+const fontColor = '#fff';
 
 export const StyledView = styled.View`
     padding: 64px;
@@ -30,10 +30,11 @@ export const StyledTouchableOpacity = styled.TouchableOpacity`
 `
 
 export const StyledTextInput = styled.TextInput`
-    background: white;
     marginBottom: 8px;
     border-radius: 4px;
     font-size: 25px;
     padding: 8px;
-    color: ${fontColor}
+    color: 222;
+    background: white,
+    opacity: 0.8;
 `
