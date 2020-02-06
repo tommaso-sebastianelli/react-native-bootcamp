@@ -1,8 +1,10 @@
+import { Icon } from 'native-base'
 import React from 'react'
 import { connect } from 'react-redux'
 import { signOutRequest } from '../../redux/auth/actions'
-import { StyledView, StyledText, StyledTouchableOpacity } from '../../utils/styled'
 import { userSelector } from '../../redux/auth/selectors'
+import { StyledText, StyledTextButton, StyledTouchableOpacity, StyledView } from '../../utils/styled'
+
 
 
 function Home({ doLogout, user }) {
@@ -11,7 +13,7 @@ function Home({ doLogout, user }) {
         <StyledView>
             <StyledText>Welcome, {user}</StyledText>
             <StyledTouchableOpacity onPress={doLogout}>
-                <StyledText>Logout</StyledText>
+                <StyledTextButton>Logout</StyledTextButton>
             </StyledTouchableOpacity>
         </StyledView>
     )

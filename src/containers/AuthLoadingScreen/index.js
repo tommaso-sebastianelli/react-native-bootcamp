@@ -2,7 +2,7 @@ import { Spinner } from 'native-base';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { isAuthenticatedSelector } from '../../redux/auth/selectors';
-import { StyledView } from '../../utils/styled';
+import { StyledView, primaryColor } from '../../utils/styled';
 
 
 function AuthLoadingScreen(props) {
@@ -18,7 +18,7 @@ function AuthLoadingScreen(props) {
 
     return (
         <StyledView>
-            <Spinner color="white" />
+            <Spinner color={primaryColor} />
         </StyledView>
     )
 }
