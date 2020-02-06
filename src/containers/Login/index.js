@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { signInRequest } from '../../redux/auth/actions';
-import { StyledText, StyledTouchableOpacity, StyledView } from '../../utils/styled';
-import { StyledTextInput } from './style';
+import { StyledText, StyledTextInput, StyledTouchableOpacity, StyledView } from '../../utils/styled';
 
 function Login({ doLogin }) {
 
