@@ -6,7 +6,7 @@ import { AUTH_OFF, AUTH_REQUEST_START } from './types';
 
 
 const mockAuthorize = (username, password) => (console.log(`credentials: ${username} ${password}`), new Promise((resolve) =>
-  (username === 'Tommaso' && password === 'aaa')
+  (username === 'User' && password === 'password')
     ? resolve({ status: 200, username: username, token: '6fbu3r93urGVIWd3DG$)/Y)/ygdtd3d' })
     : resolve({ status: 401 })
 ));
