@@ -39,7 +39,7 @@ From the root foder
 
 ## Libraries
 
-I this template has been used the following libraries: 
+The following libraries have been used: 
 
 * [react-redux](https://github.com/reduxjs/react-redux)
 * [redux-saga](https://github.com/redux-saga/redux-saga)
