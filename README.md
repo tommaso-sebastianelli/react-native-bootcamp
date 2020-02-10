@@ -5,7 +5,6 @@ A Login template written in react native
 ### ios
 <p align="center">
 <img src="https://github.com/tommaso-sebastianelli/react-native-authentication-template/blob/master/screenshots/screen_01.png" width="256">
-<img src="https://github.com/tommaso-sebastianelli/react-native-authentication-template/blob/master/screenshots/screen_04.png" width="256">
 </p>
 
 ## Setup
