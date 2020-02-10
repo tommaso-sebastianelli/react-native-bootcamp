@@ -5,15 +5,7 @@ A Login template written in react native
 ### ios
 <p align="center">
 <img src="https://github.com/tommaso-sebastianelli/react-native-authentication-template/blob/master/screenshots/screen_01.png" width="256">
-<img src="https://github.com/tommaso-sebastianelli/react-native-authentication-template/blob/master/screenshots/screen_02.png" width="256">
-<img src="https://github.com/tommaso-sebastianelli/react-native-authentication-template/blob/master/screenshots/screen_03.png" width="256">
-</p>
-
-### android
-<p align="center">
 <img src="https://github.com/tommaso-sebastianelli/react-native-authentication-template/blob/master/screenshots/screen_04.png" width="256">
-<img src="https://github.com/tommaso-sebastianelli/react-native-authentication-template/blob/master/screenshots/screen_05.png" width="256">
-<img src="https://github.com/tommaso-sebastianelli/react-native-authentication-template/blob/master/screenshots/screen_06.png" width="256">
 </p>
 
 ## Setup
@@ -39,7 +31,7 @@ From the root foder
 
 ## Libraries
 
-I this template has been used the following libraries: 
+The following libraries have been used: 
 
 * [react-redux](https://github.com/reduxjs/react-redux)
 * [redux-saga](https://github.com/redux-saga/redux-saga)
