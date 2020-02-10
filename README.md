@@ -2,7 +2,7 @@
 
 A Login template written in react native
 
-### ios
+### Preview
 <p align="center">
 <img src="https://github.com/tommaso-sebastianelli/react-native-authentication-template/blob/master/screenshots/demo.gif" width="256">
 </p>
