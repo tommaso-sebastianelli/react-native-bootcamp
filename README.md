@@ -36,6 +36,6 @@ The following libraries have been used:
 * [redux-saga](https://github.com/redux-saga/redux-saga)
 * [reselect](https://github.com/reduxjs/reselect)
 * [redux-persist](https://github.com/rt2zz/redux-persist)
-* [react-navigation](https://github.com/rt2zz/redux-persist)
+* [react-navigation](https://github.com/react-navigation/react-navigation)
 * [styled-components](https://github.com/styled-components/styled-components)
 
